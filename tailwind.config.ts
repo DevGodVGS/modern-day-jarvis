@@ -61,7 +61,29 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				jarvis: {
+					glow: 'hsl(var(--jarvis-glow))',
+					'glow-soft': 'hsl(var(--jarvis-glow-soft))',
+					surface: 'hsl(var(--jarvis-surface))',
+					'surface-elevated': 'hsl(var(--jarvis-surface-elevated))',
+					glass: 'hsl(var(--jarvis-glass))',
+					'glass-border': 'hsl(var(--jarvis-glass-border))'
 				}
+			},
+			backgroundImage: {
+				'gradient-jarvis': 'var(--gradient-jarvis)',
+				'gradient-jarvis-intense': 'var(--gradient-jarvis-intense)',
+				'gradient-surface': 'var(--gradient-surface)'
+			},
+			boxShadow: {
+				'jarvis': 'var(--shadow-jarvis)',
+				'jarvis-intense': 'var(--shadow-jarvis-intense)',
+				'surface': 'var(--shadow-surface)'
+			},
+			transitionProperty: {
+				'jarvis': 'var(--transition-jarvis)',
+				'glow': 'var(--transition-glow)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +106,38 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px hsl(var(--jarvis-glow) / 0.3)'
+					},
+					'50%': {
+						boxShadow: '0 0 40px hsl(var(--jarvis-glow) / 0.6)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'typing': {
+					'0%': {
+						width: '0'
+					},
+					'100%': {
+						width: '100%'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'typing': 'typing 0.5s steps(40, end)'
 			}
 		}
 	},
