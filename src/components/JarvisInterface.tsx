@@ -186,25 +186,78 @@ export const JarvisInterface = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Background Effects */}
+      {/* Advanced Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-jarvis-surface to-background opacity-90" />
-      <div className="absolute inset-0">
+      
+      {/* Holographic Grid */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-gradient-hologram animate-energy-flow bg-size-200" />
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(90deg, hsl(var(--jarvis-glow) / 0.1) 1px, transparent 1px),
+            linear-gradient(hsl(var(--jarvis-glow) / 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
+
+      {/* Neural Network Nodes */}
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-jarvis-glow opacity-5 rounded-full blur-3xl animate-pulse-glow" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-jarvis-glow-soft opacity-5 rounded-full blur-3xl animate-pulse-glow delay-1000" />
+        <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-jarvis-neural opacity-10 rounded-full blur-2xl animate-neural-pulse" />
+        <div className="absolute top-3/4 left-1/3 w-48 h-48 bg-jarvis-hologram opacity-8 rounded-full blur-3xl animate-hologram" />
+        <div className="absolute top-1/3 right-1/3 w-40 h-40 bg-jarvis-energy opacity-6 rounded-full blur-2xl animate-energy-flow" />
+      </div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-jarvis-glow rounded-full opacity-60 animate-particle-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${100 + Math.random() * 20}%`,
+              animationDelay: `${i * 1.5}s`,
+              animationDuration: `${8 + Math.random() * 4}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Data Streams */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-px h-20 bg-gradient-to-t from-transparent via-jarvis-glow to-transparent opacity-40 animate-data-stream"
+            style={{
+              left: `${10 + i * 15}%`,
+              animationDelay: `${i * 0.8}s`,
+              animationDuration: '3s'
+            }}
+          />
+        ))}
       </div>
 
       {/* Header */}
-      <header className="relative z-10 border-b border-jarvis-glass-border backdrop-blur-sm">
+      <header className="relative z-10 border-b border-jarvis-glass-border backdrop-blur-md bg-jarvis-glass shadow-hologram">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="relative">
-                <Code className="w-8 h-8 text-jarvis-glow animate-pulse-glow" />
-                <div className="absolute inset-0 bg-jarvis-glow blur-sm opacity-50" />
+            <div className="flex items-center space-x-4">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-neural rounded-full opacity-20 animate-neural-pulse" />
+                <div className="relative p-3 bg-jarvis-surface rounded-full shadow-neural border border-jarvis-glass-border">
+                  <Code className="w-8 h-8 text-jarvis-glow animate-pulse-glow" />
+                  <div className="absolute inset-0 bg-jarvis-glow blur-md opacity-30 rounded-full" />
+                </div>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-foreground">JARVIS</h1>
-                <p className="text-sm text-muted-foreground">Personal Coding Assistant</p>
+                <h1 className="text-3xl font-bold text-foreground tracking-wider animate-hologram">
+                  J.A.R.V.I.S
+                </h1>
+                <p className="text-sm text-jarvis-glow font-mono">Personal Coding Assistant v2.0</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
@@ -252,10 +305,10 @@ export const JarvisInterface = () => {
                 )}
               >
                 <Card className={cn(
-                  "max-w-[80%] backdrop-blur-sm transition-all duration-300",
+                  "max-w-[80%] backdrop-blur-md transition-hologram duration-500 group hover:shadow-hologram",
                   message.type === 'user'
-                    ? "bg-gradient-jarvis border-jarvis-glass-border shadow-jarvis"
-                    : "bg-jarvis-surface border-border shadow-surface"
+                    ? "bg-gradient-jarvis border-jarvis-glass-border shadow-jarvis hover:bg-gradient-hologram"
+                    : "bg-jarvis-surface border-jarvis-glass-border shadow-neural hover:shadow-energy"
                 )}>
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
@@ -285,16 +338,22 @@ export const JarvisInterface = () => {
                 </Card>
               </div>
             ))}
-            {isProcessing && (
+              {isProcessing && (
               <div className="flex justify-start">
-                <Card className="bg-jarvis-surface border-border shadow-surface backdrop-blur-sm">
+                <Card className="bg-jarvis-surface border-jarvis-glass-border shadow-neural backdrop-blur-md animate-hologram">
                   <CardContent className="p-4">
                     <div className="flex items-center space-x-3">
-                      <Terminal className="w-5 h-5 text-jarvis-glow animate-pulse" />
+                      <div className="relative">
+                        <Terminal className="w-5 h-5 text-jarvis-glow animate-pulse" />
+                        <div className="absolute inset-0 bg-jarvis-glow blur-sm opacity-50 animate-neural-pulse" />
+                      </div>
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-jarvis-glow rounded-full animate-bounce" />
-                        <div className="w-2 h-2 bg-jarvis-glow rounded-full animate-bounce delay-100" />
-                        <div className="w-2 h-2 bg-jarvis-glow rounded-full animate-bounce delay-200" />
+                        <div className="w-2 h-2 bg-jarvis-glow rounded-full animate-bounce shadow-jarvis" />
+                        <div className="w-2 h-2 bg-jarvis-neural rounded-full animate-bounce delay-100 shadow-neural" />
+                        <div className="w-2 h-2 bg-jarvis-hologram rounded-full animate-bounce delay-200 shadow-hologram" />
+                      </div>
+                      <div className="text-xs text-jarvis-glow font-mono animate-typing">
+                        Analyzing neural pathways...
                       </div>
                     </div>
                   </CardContent>
@@ -306,32 +365,40 @@ export const JarvisInterface = () => {
         </div>
 
         {/* Input Area */}
-        <div className="border-t border-jarvis-glass-border backdrop-blur-sm">
+        <div className="border-t border-jarvis-glass-border backdrop-blur-md bg-jarvis-glass shadow-hologram">
           <div className="max-w-4xl mx-auto p-6">
-            <div className="flex items-end space-x-3">
-              <Button
-                variant="jarvis-ghost"
-                size="icon"
-                onClick={toggleListening}
-                className={cn(
-                  "flex-shrink-0 h-12 w-12 rounded-full",
-                  isListening && "shadow-jarvis-intense bg-jarvis-glass animate-pulse-glow"
+            <div className="flex items-end space-x-4">
+              <div className="relative">
+                <Button
+                  variant="jarvis-ghost"
+                  size="icon"
+                  onClick={toggleListening}
+                  className={cn(
+                    "flex-shrink-0 h-12 w-12 rounded-full transition-hologram",
+                    isListening 
+                      ? "shadow-energy bg-gradient-energy animate-neural-pulse" 
+                      : "shadow-jarvis bg-gradient-jarvis hover:shadow-hologram"
+                  )}
+                >
+                  {isListening ? (
+                    <Mic className="w-5 h-5 text-background animate-pulse" />
+                  ) : (
+                    <MicOff className="w-5 h-5" />
+                  )}
+                </Button>
+                {isListening && (
+                  <div className="absolute inset-0 bg-jarvis-energy rounded-full animate-ping opacity-75" />
                 )}
-              >
-                {isListening ? (
-                  <Mic className="w-5 h-5" />
-                ) : (
-                  <MicOff className="w-5 h-5" />
-                )}
-              </Button>
+              </div>
               
-              <div className="flex-1 relative">
+              <div className="flex-1 relative group">
+                <div className="absolute inset-0 bg-gradient-hologram rounded-lg opacity-20 animate-energy-flow" />
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask me anything about coding, or click the mic to speak..."
-                  className="bg-jarvis-surface border-jarvis-glass-border text-foreground placeholder:text-muted-foreground focus:border-jarvis-glow focus:shadow-jarvis pr-12 transition-all duration-300"
+                  placeholder="Interface with J.A.R.V.I.S neural network..."
+                  className="relative bg-jarvis-surface/80 border-jarvis-glass-border text-foreground placeholder:text-jarvis-glow/60 focus:border-jarvis-glow-intense focus:shadow-hologram pr-12 transition-hologram backdrop-blur-md"
                   disabled={isProcessing || isListening}
                 />
                 <Button
@@ -339,10 +406,13 @@ export const JarvisInterface = () => {
                   size="icon"
                   onClick={() => handleSendMessage()}
                   disabled={!input.trim() || isProcessing || isListening}
-                  className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8"
+                  className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 hover:shadow-neural"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-4 h-4 group-hover:text-jarvis-glow transition-colors" />
                 </Button>
+                
+                {/* Neural Connection Indicator */}
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-jarvis-glow rounded-full opacity-80 animate-pulse-glow" />
               </div>
             </div>
           </div>

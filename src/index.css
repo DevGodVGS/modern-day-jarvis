@@ -42,24 +42,48 @@ All colors MUST be HSL.
     /* Custom Jarvis Tokens */
     --jarvis-glow: 190 100% 50%;
     --jarvis-glow-soft: 190 80% 40%;
+    --jarvis-glow-intense: 180 100% 60%;
     --jarvis-surface: 220 25% 8%;
     --jarvis-surface-elevated: 220 20% 12%;
     --jarvis-glass: 190 100% 50% / 0.1;
     --jarvis-glass-border: 190 100% 50% / 0.2;
+    --jarvis-hologram: 170 100% 70%;
+    --jarvis-neural: 280 100% 70%;
+    --jarvis-energy: 60 100% 50%;
     
     /* Gradients */
     --gradient-jarvis: linear-gradient(135deg, hsl(190 100% 50% / 0.1), hsl(190 80% 40% / 0.05));
     --gradient-jarvis-intense: linear-gradient(135deg, hsl(190 100% 50%), hsl(190 80% 40%));
     --gradient-surface: linear-gradient(145deg, hsl(220 25% 8%), hsl(220 20% 12%));
+    --gradient-hologram: linear-gradient(45deg, 
+      hsl(170 100% 70% / 0.3) 0%, 
+      hsl(190 100% 50% / 0.3) 25%, 
+      hsl(280 100% 70% / 0.3) 50%, 
+      hsl(190 100% 50% / 0.3) 75%, 
+      hsl(170 100% 70% / 0.3) 100%);
+    --gradient-neural: conic-gradient(from 0deg, 
+      hsl(190 100% 50%), 
+      hsl(280 100% 70%), 
+      hsl(170 100% 70%), 
+      hsl(190 100% 50%));
+    --gradient-energy: radial-gradient(circle at center, 
+      hsl(60 100% 50% / 0.8) 0%, 
+      hsl(190 100% 50% / 0.4) 50%, 
+      transparent 70%);
     
     /* Shadows */
     --shadow-jarvis: 0 0 20px hsl(190 100% 50% / 0.3);
     --shadow-jarvis-intense: 0 0 40px hsl(190 100% 50% / 0.5);
     --shadow-surface: 0 8px 32px hsl(220 25% 3% / 0.5);
+    --shadow-hologram: 0 0 60px hsl(170 100% 70% / 0.4), inset 0 0 20px hsl(190 100% 50% / 0.2);
+    --shadow-neural: 0 0 80px hsl(280 100% 70% / 0.6);
+    --shadow-energy: 0 0 100px hsl(60 100% 50% / 0.8);
     
     /* Animations */
     --transition-jarvis: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-glow: box-shadow 0.3s ease-in-out;
+    --transition-hologram: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-neural: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
     --sidebar-background: 0 0% 98%;
 
