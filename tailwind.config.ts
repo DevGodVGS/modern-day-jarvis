@@ -218,6 +218,15 @@ export default {
 					}
 				}
 			},
+			'grid-move': {
+				'0%': { transform: 'translate(0, 0)' },
+				'100%': { transform: 'translate(60px, 60px)' }
+			},
+			'scan': {
+				'0%': { transform: 'translateY(-100%)', opacity: '0' },
+				'50%': { opacity: '1' },
+				'100%': { transform: 'translateY(400%)', opacity: '0' }
+			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
@@ -228,7 +237,8 @@ export default {
 				'neural-pulse': 'neural-pulse 3s ease-in-out infinite',
 				'energy-flow': 'energy-flow 6s ease-in-out infinite',
 				'particle-float': 'particle-float 8s linear infinite',
-				'data-stream': 'data-stream 2s ease-in-out infinite'
+				'data-stream': 'data-stream 2s ease-in-out infinite',
+				'scan': 'scan 2s linear infinite'
 			}
 		}
 	},

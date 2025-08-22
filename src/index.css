@@ -84,6 +84,10 @@ All colors MUST be HSL.
     --transition-glow: box-shadow 0.3s ease-in-out;
     --transition-hologram: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --transition-neural: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    
+    /* Additional Animation Keyframes */
+    --animation-grid-move: grid-move 20s linear infinite;
+    --animation-scan: scan 2s linear infinite;
 
     --sidebar-background: 0 0% 98%;
 
